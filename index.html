@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter by Saksham Jain</title>
+</head>
+<style>
+    body {
+        background-image: url(Untitled\ design\ \(3\).jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column; /* Vertically align content */
+    }
+
+    #container {
+        text-align: center;
+        padding: 20px;
+        max-width: 800px;
+    }
+
+    #logo-container {
+        text-align: center;
+        padding: 20px 0; /* Add padding to create space around the logo */
+    }
+
+    #logo {
+        max-width: 100%; /* Ensure the logo does not exceed its original size */
+    }
+
+    .input-div {
+        display: inline-block;
+        vertical-align: middle; /* Align the input-div elements vertically */
+    }
+
+    .inp {
+        padding: 5px 10px;
+        margin: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        font-style: italic;
+        width: 220px;
+        text-align: center;
+        background-color: rgba(100, 99, 99, 0.462)
+    }
+
+    label {
+        font-size: 27px;
+        color: rgb(12, 11, 11);
+        font-weight: bold;
+    }
+</style>
+<body>
+
+    <div id="logo-container">
+        <img src="temperature-converter-logo__1_-removebg-preview.png" alt="Logo" id="logo">
+    </div>
+    
+    <div id="container">
+    
+        
+        <div class="input-div">
+            <label>Celsius</label><br>
+            <input type="number" value="0" id="cel" class="inp">
+        </div>
+        <div class="input-div">
+            <label>Fahrenheit</label><br>
+            <input type="number" value="32" id="fah" class="inp">
+        </div>
+        <div class="input-div">
+            <label>Kelvin</label><br>
+            <input type="number" value="273.15" id="kel" class="inp">
+        </div>
+    </div>
+
+    
+                                
+        
+     <script>
+      var cel = document.getElementById("cel");
+var fah = document.getElementById("fah");
+var kel = document.getElementById("kel");
+
+function roundToFourDecimals(number) {
+    return Math.round(number * 10000) / 10000;
+}
+
+cel.addEventListener('input', function () {
+    let c = parseFloat(this.value);
+    let f = (c * 9 / 5) + 32;
+    let k = c + 273.15;
+
+    fah.value = roundToFourDecimals(f);
+    kel.value = roundToFourDecimals(k);
+});
+
+fah.addEventListener('input', function () {
+    let f = parseFloat(this.value);
+    let c = (f - 32) * 5 / 9;
+    let k = (f - 32) * 5 / 9 + 273.15;
+
+    cel.value = roundToFourDecimals(c);
+    kel.value = roundToFourDecimals(k);
+});
+
+kel.addEventListener('input', function () {
+    let k = parseFloat(this.value);
+    let c = k - 273.15;
+    let f = (k - 273.15) * 9 / 5 + 32;
+
+    cel.value = roundToFourDecimals(c);
+    fah.value = roundToFourDecimals(f);
+});
+
+
+     </script>   
+
+</body>
+</html>
